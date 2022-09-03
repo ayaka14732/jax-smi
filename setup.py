@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md')) as f:
 
 setup(
     name='jax-smi',
-    version='1.0.0',
+    version='1.0.1',
     description='JAX Synergistic Memory Inspector',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -36,7 +36,7 @@ setup(
     package_dir={'': 'src'},
     include_package_data=True,
     python_requires='>=3.8, <4',
-    install_requires=['jax>=0.2.16'],
+    install_requires=['jax>=0.2.16', 'fire'],
     entry_points = {
         'console_scripts': ['jax-smi=jax_smi.cli_tool:main'],
     },
@@ -44,5 +44,5 @@ setup(
         'Bug Reports': 'https://github.com/ayaka14732/jax-smi/issues',
         'Source': 'https://github.com/ayaka14732/jax-smi',
     },
-    zip_safe=False
+    zip_safe=False,
 )
