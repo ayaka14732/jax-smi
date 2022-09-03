@@ -10,6 +10,16 @@ This project is supported by Cloud TPUs from Google's [TPU Research Cloud](https
 
 ## Installation
 
+Install `go`. On Ubuntu, this is usually done by:
+
+```sh
+sudo apt-get install golang
+```
+
+If you followed [tpu-starter](https://github.com/ayaka14732/tpu-starter) to set up the TPU environment, `go` should be already installed.
+
+Then install `jax-smi` with:
+
 ```sh
 pip install jax-smi
 ```
@@ -32,9 +42,9 @@ jax-smi
 
 ## Approach
 
-Save the TPU memory profile to `/dev/shm/memory.prof` in a separate thread every 1 second using [`jax.profiler.save_device_memory_profile()`](https://jax.readthedocs.io/en/latest/_autosummary/jax.profiler.save_device_memory_profile.html).
+Save the memory profile to `/dev/shm/memory.prof` in a separate thread every 1 second using [`jax.profiler.save_device_memory_profile()`](https://jax.readthedocs.io/en/latest/_autosummary/jax.profiler.save_device_memory_profile.html).
 
-Monitor the memory profile with `go tool pprof -tags /dev/shm/memory.prof`.
+Inspect the memory profile with `go tool pprof -tags /dev/shm/memory.prof`.
 
 See <https://twitter.com/ayaka14732/status/1565013139594551296> for more details.
 

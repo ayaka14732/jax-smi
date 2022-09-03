@@ -1,3 +1,7 @@
+# uncomment the following lines to test on CPU
+# import os; os.environ['XLA_FLAGS'] = os.environ.get('XLA_FLAGS', '') + ' --xla_force_host_platform_device_count=8'
+# import jax; jax.config.update('jax_platforms', 'cpu')
+
 import functools
 import jax
 import jax.numpy as np
@@ -19,8 +23,8 @@ def main():
     for i in range(1000):
         print(i)
 
-        x = random.randrange(100, 32000)
-        y = random.randrange(100, 32000)
+        x = random.randrange(100, 320)
+        y = random.randrange(100, 320)
 
         a = np.zeros((x, 11, 4, 2), dtype=np.float32)
         b = np.zeros((y, 11, 4, 2), dtype=np.float32)
