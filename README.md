@@ -1,6 +1,6 @@
 # JAX Synergistic Memory Inspector
 
-<image src="demo/1.gif" width="360px" />
+![](https://raw.githubusercontent.com/ayaka14732/jax-smi/main/demo/1.gif)
 
 `jax-smi` is a tool for real-time inspection of the memory usage of a JAX process. It is similar to `nvidia-smi` for GPU, but works on multiple platforms including CPU, CPU and TPU.
 

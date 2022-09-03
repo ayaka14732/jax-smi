@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md')) as f:
 
 setup(
     name='jax-smi',
-    version='1.0.1',
+    version='1.0.2',
     description='JAX Synergistic Memory Inspector',
     long_description=long_description,
     long_description_content_type='text/markdown',
