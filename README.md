@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/ayaka14732/jax-smi/main/demo/1.gif)
 
-`jax-smi` is a tool for real-time inspection of the memory usage of a JAX process. It is similar to `nvidia-smi` for GPU, but works on multiple platforms including CPU, CPU and TPU.
+`jax-smi` is a tool for real-time inspection of the memory usage of a JAX process. It is similar to `nvidia-smi` for GPU, but works on multiple platforms including CPU, GPU and TPU.
 
 On TPU platforms, `jax-smi` is the only way to monitor TPU memory usage. On GPU platforms, `jax-smi` is also preferable to `nvidia-smi`. The latter is unable to report real-time memory usage of JAX processes, as JAX always [pre-allocates 90% of the GPU memory](https://jax.readthedocs.io/en/latest/gpu_memory_allocation.html) by default.
 
@@ -48,8 +48,8 @@ Inspect the memory profile with `go tool pprof -tags /dev/shm/memory.prof`.
 
 See <https://twitter.com/ayaka14732/status/1565013139594551296> for more details.
 
-## Known Issues
+## Limitations
 
 Tracing can only be performed by one process at a time. If tracing is performed by multiple JAX processes, they will write the memory profiles to the same file, which will lead to conflicts.
 
-The `jax-smi` command line tool cannot detect if a memory profile file is out of date. Therefore, when no JAX process is running, the tool will read the outdated memory profile and will not be able to report that memory is not being used.
+The `jax-smi` command line tool cannot detect if a memory profile file is out of date. Therefore, even if no JAX process is running, the tool will still read the outdated memory profile and report outdated memory usage information.
