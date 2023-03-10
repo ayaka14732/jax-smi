@@ -1,4 +1,4 @@
-def initialise_tracking(interval: float=1.) -> None:
+def initialise_tracking(interval: float=1., dir_prefix: str='/dev/shm') -> None:
     import jax
     import threading
 
@@ -6,8 +6,8 @@ def initialise_tracking(interval: float=1.) -> None:
         import posix
         import time
         while True:
-            jax.profiler.save_device_memory_profile('/dev/shm/memory.prof.new')
-            posix.rename('/dev/shm/memory.prof.new', '/dev/shm/memory.prof')  # atomic
+            jax.profiler.save_device_memory_profile(f'{dir_prefix}/memory.prof.new')
+            posix.rename(f'{dir_prefix}/memory.prof.new', f'{dir_prefix}/memory.prof')  # atomic
             time.sleep(interval)
 
     thread = threading.Thread(target=inner, daemon=True)
