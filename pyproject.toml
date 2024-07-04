@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "jax-smi"
+authors = [
+  { name="Ayaka", email="ayaka@mail.shn.hk" },
+]
+dependencies = [
+    "jax>=0.2.16",
+    "fire",
+    "tpu-info @ git+https://github.com/google/cloud-accelerator-diagnostics.git@6439522892666f9a50ce3bfad7f9a12d4c7e136b#egg=tpu-info&subdirectory=tpu_info",
+]
+dynamic = ["version"]
+description = "JAX Synergistic Memory Inspector"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Distributed Computing",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/ayaka14732/jax-smi"
+Issues = "https://github.com/ayaka14732/jax-smi/issues"
+
+[project.scripts]
+jax-smi = "jax_smi.cli_tool:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "jax_smi.__version__"}

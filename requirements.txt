@@ -1,0 +1,1 @@
+-e git+https://github.com/google/cloud-accelerator-diagnostics.git@6439522892666f9a50ce3bfad7f9a12d4c7e136b#egg=tpu-info&subdirectory=tpu_info
