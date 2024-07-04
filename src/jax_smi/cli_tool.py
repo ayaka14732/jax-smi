@@ -1,9 +1,24 @@
-import curses
-import fire
-import time
 import subprocess
+import time
 
-def run(interval: float=1., dir_prefix: str='/dev/shm'):
+import fire
+
+from .common_utils import ON_TPU
+
+def print_info_tpu(interval: float=1.) -> None:
+    import rich.console
+    from tpu_info.cli import print_chip_info
+
+    console = rich.console.Console()
+
+    while True:
+        console.clear()
+        print_chip_info()
+        time.sleep(interval)
+
+def print_info_non_tpu(interval: float=1., dir_prefix: str='/dev/shm') -> None:
+    import curses
+
     stdscr = curses.initscr()
     try:
         while True:
@@ -18,6 +33,12 @@ def run(interval: float=1., dir_prefix: str='/dev/shm'):
             time.sleep(interval)
     except KeyboardInterrupt:
         curses.endwin()
+
+def run(interval: float=1., dir_prefix: str='/dev/shm'):
+    if ON_TPU:
+        print_info_tpu()
+    else:
+        print_info_non_tpu(interval=interval, dir_prefix=dir_prefix)
 
 def main():
     fire.Fire(run)
