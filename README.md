@@ -42,6 +42,8 @@ jax-smi
 
 ## Approach
 
+Update: Since v2.0.0, `jax-smi` calls `tpu-info` directly on TPU platforms.
+
 Save the memory profile to `/dev/shm/memory.prof` in a separate thread every 1 second using [`jax.profiler.save_device_memory_profile()`](https://jax.readthedocs.io/en/latest/_autosummary/jax.profiler.save_device_memory_profile.html).
 
 Inspect the memory profile with `go tool pprof -tags /dev/shm/memory.prof`.

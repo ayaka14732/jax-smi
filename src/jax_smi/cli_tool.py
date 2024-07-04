@@ -1,3 +1,4 @@
+from datetime import datetime
 import subprocess
 import time
 
@@ -11,10 +12,14 @@ def print_info_tpu(interval: float=1.) -> None:
 
     console = rich.console.Console()
 
-    while True:
-        console.clear()
-        print_chip_info()
-        time.sleep(interval)
+    try:
+        while True:
+            console.clear()
+            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            print_chip_info()
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        pass
 
 def print_info_non_tpu(interval: float=1., dir_prefix: str='/dev/shm') -> None:
     import curses
