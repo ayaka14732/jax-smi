@@ -1,10 +1,4 @@
-from .common_utils import ON_TPU
-
 def initialise_tracking(interval: float=1., dir_prefix: str='/dev/shm') -> None:
-    # on TPU, we use `tpu-info` directly, so nothing needs to be done here
-    if ON_TPU:
-        return
-
     import jax
     import threading
 
